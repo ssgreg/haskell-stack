@@ -1,0 +1,21 @@
+version: '2'
+services:
+        
+    haskell-stack:
+        image: ssgreg/haskell-stack:latest
+        hostname: example
+        restart: always
+        container_name: example
+
+        logging:
+            driver: json-file
+            options:
+                max-size: "100m"
+                max-file: "5"
+
+        volumes:
+            - ./var/example:/var/project
+
+        environment:
+            - BUILD_MODE=1
+
